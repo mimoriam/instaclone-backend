@@ -7,6 +7,10 @@ npm i -D prisma
 npx prisma init
 npm i @prisma/client
 
-npm i bcryptjs @nestjs/jwt ioredis nodemailer otplib qrcode helmet
-npm i -D @types/bcryptjs @types/multer @types/nodemailer @types/qrcode
+npm i bcrypt @nestjs/jwt ioredis nodemailer otplib qrcode helmet
+npm i -D @types/bcrypt @types/multer @types/nodemailer @types/qrcode
 nest g resource users
+
+nest g module iam
+nest g service iam/hashing
+nest g service iam/hashing/bcrypt --flat
