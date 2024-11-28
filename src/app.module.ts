@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
+import { UsersModule } from './users/users.module';
 
 import * as Joi from 'joi';
 
@@ -23,6 +24,8 @@ const envSchema = Joi.object({
       cache: true,
       expandVariables: true,
     }),
+
+    UsersModule,
   ],
   controllers: [],
   providers: [],
