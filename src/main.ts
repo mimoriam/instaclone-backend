@@ -35,6 +35,8 @@ async function bootstrap() {
 
   app.use(cookieParser());
 
+  app.enableShutdownHooks();
+
   await app.listen(configService.get('PORT') || 3000);
 }
 
