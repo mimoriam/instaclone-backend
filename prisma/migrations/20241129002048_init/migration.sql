@@ -7,6 +7,7 @@ CREATE TABLE "User" (
     "username" TEXT,
     "email" TEXT NOT NULL,
     "password" TEXT,
+    "role" "Role" NOT NULL DEFAULT 'USER',
     "isTfaEnabled" BOOLEAN NOT NULL DEFAULT false,
     "tfaSecret" TEXT,
     "resetPasswordToken" TEXT,

@@ -36,7 +36,6 @@ const envSchema = Joi.object({
     }),
 
     UsersModule,
-
     IamModule,
   ],
   controllers: [],
