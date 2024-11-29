@@ -23,7 +23,8 @@
     "migrate:deploy": "dotenv -e .env.local npx prisma migrate deploy",
     "migrate:status": "dotenv -e .env.local npx prisma migrate status",
     "prisma studio": "dotenv -e .env.local -- npx prisma studio",
-    "prisma generate": "dotenv -e .env.local -- npx prisma generate"
+    "prisma generate": "dotenv -e .env.local -- npx prisma generate",
+    "seed_users": "dotenv -e .env.local -- ts-node --compiler-options {\\\"module\\\":\\\"CommonJS\\\"} prisma/seed/users.seed.ts"
   },
   "prisma": {
     "schema": "./prisma/schema"

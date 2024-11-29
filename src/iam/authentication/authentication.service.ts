@@ -49,7 +49,7 @@ export class AuthenticationService {
 
   async signUp(signUpDto: SignUpDto) {
     try {
-      const { username, email, role } = signUpDto;
+      const { username, email, role, fullName } = signUpDto;
 
       if (role === 'ADMIN' || role === Role.ADMIN.toString()) {
         throw new ForbiddenException();
@@ -60,8 +60,8 @@ export class AuthenticationService {
       const user = await this.prisma.user.create({
         data: {
           username,
+          fullName,
           email,
-          role,
           password: hashedPassword,
         },
       });

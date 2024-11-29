@@ -4,19 +4,29 @@ enum Role {
 }
 
 model User {
-  id                  String    @id @default(cuid())
-  username            String?
-  email               String    @unique
-  password            String?
+  id                 String  @id @default(cuid())
+  fullName           String
+  username           String  @unique
+  email              String  @unique
+  password           String?
   // TODO: Role based-ACL to use Role[] instead of Role
   // role                Role[]
-  role                Role      @default(USER)
+  role               Role    @default(USER)
+  avatar             String  @default("")
+  bio                String?
+  website            String?
+  private            Boolean @default(false)
+  blueCheckConfirmed Boolean @default(false)
+
   isTfaEnabled        Boolean   @default(false)
   tfaSecret           String?
   resetPasswordToken  String?   @unique
   resetPasswordExpire DateTime?
   confirmEmailToken   String?   @unique
   isEmailConfirmed    Boolean   @default(false)
-  createdAt           DateTime  @default(now())
-  updatedAt           DateTime  @updatedAt
+
+  Post Post[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }

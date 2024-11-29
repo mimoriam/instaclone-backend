@@ -1,0 +1,20 @@
+enum Filter {
+  NONE
+  CLARENDON
+  MOON
+}
+
+model Post {
+  id        String   @id @default(cuid())
+  image     String
+  filter    Filter   @default(NONE)
+  thumbnail String
+  caption   String
+  hashtags  String[]
+
+  author   User   @relation(fields: [authorId], references: [id])
+  authorId String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

@@ -23,3 +23,5 @@ nest g guard iam/authentication/guards/access-token
 nest g guard iam/authentication/guards/authentication
 
 npm i helmet @nestjs/throttler
+
+npm i -D @faker-js/faker
