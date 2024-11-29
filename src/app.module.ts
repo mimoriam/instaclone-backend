@@ -2,6 +2,8 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { UsersModule } from './users/users.module';
 import { IamModule } from './iam/iam.module';
+import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
+import { APP_GUARD } from '@nestjs/core';
 
 import * as Joi from 'joi';
 
@@ -22,6 +24,12 @@ const envSchema = Joi.object({
 
 @Module({
   imports: [
+    ThrottlerModule.forRoot([
+      {
+        ttl: 10 * 60 * 1000, // 10 mins
+        limit: 100,
+      },
+    ]),
     ConfigModule.forRoot({
       envFilePath: ['.env.local'],
       validationSchema: envSchema,
@@ -39,7 +47,13 @@ const envSchema = Joi.object({
     IamModule,
   ],
   controllers: [],
-  providers: [],
+  providers: [
+    // Provide throttle globally:
+    {
+      provide: APP_GUARD,
+      useClass: ThrottlerGuard,
+    },
+  ],
   exports: [ConfigModule],
 })
 export class AppModule {}
