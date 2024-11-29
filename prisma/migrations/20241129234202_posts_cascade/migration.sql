@@ -57,4 +57,4 @@ CREATE UNIQUE INDEX "User_resetPasswordToken_key" ON "User"("resetPasswordToken"
 CREATE UNIQUE INDEX "User_confirmEmailToken_key" ON "User"("confirmEmailToken");
 
 -- AddForeignKey
-ALTER TABLE "Post" ADD CONSTRAINT "Post_authorId_fkey" FOREIGN KEY ("authorId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Post" ADD CONSTRAINT "Post_authorId_fkey" FOREIGN KEY ("authorId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
