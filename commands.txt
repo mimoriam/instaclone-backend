@@ -24,4 +24,7 @@ nest g guard iam/authentication/guards/authentication
 
 npm i helmet @nestjs/throttler
 
-npm i -D @faker-js/faker
+nest g module posts
+nest g controller posts --no-spec
+nest g service posts --no-spec
+npm i -D @types/multer

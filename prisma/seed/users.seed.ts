@@ -12,8 +12,9 @@ const prisma = new PrismaClient();
 async function main() {
   try {
     await prisma.user.deleteMany();
+    await prisma.post.deleteMany();
 
-    console.log('Seeding Users...');
+    console.log('Seeding Users & Posts...');
 
     const password = await bcrypt.hash('123456', 12);
 
@@ -41,7 +42,25 @@ async function main() {
     await Promise.all(
       users.map((user) => {
         return prisma.user.create({
-          data: user,
+          data: {
+            ...user,
+            Post: {
+              create: [
+                {
+                  caption: `Hello from ${user.username}`,
+                  image: '',
+                  thumbnail: '',
+                  hashtags: [],
+                },
+                {
+                  caption: `Hello2 from ${user.email}`,
+                  image: '',
+                  thumbnail: '',
+                  hashtags: [],
+                },
+              ],
+            },
+          },
         });
       }),
     );

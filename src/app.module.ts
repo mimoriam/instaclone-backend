@@ -4,6 +4,7 @@ import { UsersModule } from './users/users.module';
 import { IamModule } from './iam/iam.module';
 import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 import { APP_GUARD } from '@nestjs/core';
+import { PostsModule } from './posts/posts.module';
 
 import * as Joi from 'joi';
 
@@ -45,6 +46,7 @@ const envSchema = Joi.object({
 
     UsersModule,
     IamModule,
+    PostsModule,
   ],
   controllers: [],
   providers: [
